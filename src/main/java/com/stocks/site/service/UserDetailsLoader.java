@@ -19,16 +19,14 @@ public class UserDetailsLoader implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        System.out.println("find a user with UN : " + username);
         User user = userDao.findByUsername(username);
         if(user == null){
             throw new UsernameNotFoundException("No user found with username " + username);
         }
-        // would like to do this in the post mapping for login but not sure about that with spring security
-        if( user.getIsAuthenticated() == 0 ) {
-            System.out.println( user.getUsername() + " user is not authenticated yet");
-            throw new UsernameNotFoundException("User " + username + " is not authenticated yet");
-        }
-        return new UserWithRoles(user); // the enhanced UserDetails copy user
+//        if( user.getIsAuthenticated() == 0 ) {
+//            System.out.println( user.getUsername() + " user is not authenticated yet");
+//            throw new UsernameNotFoundException("User " + username + " is not authenticated yet");
+//        }
+        return new UserWithRoles(user);
     }
 }

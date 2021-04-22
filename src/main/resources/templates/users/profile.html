@@ -1,12 +1,17 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+<head th:replace="partials/styleHead :: styleHead(Profile)"></head>
+
 <body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+    <main>
+        <h1>Welcome <span th:text="${session.user.username}"></span> </h1>
+        <h3>Current return: </h3>
+        <h3>Account Balance: <span th:text="${session.user.userAccount.value}"></span></h3>
+    </main>
+
+<div th:replace="partials/materailScripts :: scripts"></div>
+
 </body>
 </html>

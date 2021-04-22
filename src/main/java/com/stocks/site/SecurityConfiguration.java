@@ -1,3 +1,5 @@
+package com.stocks.site;
+
 import com.stocks.site.service.UserDetailsLoader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

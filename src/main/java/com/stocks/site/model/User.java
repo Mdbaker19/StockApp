@@ -1,6 +1,7 @@
 package com.stocks.site.model;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.*;
 
 @Entity
@@ -33,6 +34,9 @@ public class User {
     @Column
     private String authCode;
 
+    @Column
+    private Timestamp joinedAt;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_stocks",
             joinColumns = {@JoinColumn(name = "user_id")},
@@ -63,11 +67,13 @@ public class User {
         this.userStocks = copy.userStocks;
         this.userAccount = copy.userAccount;
         this.userLedger = copy.userLedger;
+        this.joinedAt = copy.joinedAt;
     }
 
 
-    public User(long id, String username, String email, String password, String profileImage, int isAdmin, int isAuthenticated, String authCode, List<Stock> userStocks, List<Ledger> userLedger, Account userAccount) {
+    public User(long id, String username, Timestamp joinedAt, String email, String password, String profileImage, int isAdmin, int isAuthenticated, String authCode, List<Stock> userStocks, List<Ledger> userLedger, Account userAccount) {
         this.id = id;
+        this.joinedAt = joinedAt;
         this.username = username;
         this.email = email;
         this.password = password;
@@ -86,6 +92,14 @@ public class User {
 
     public void setUserLedger(List<Ledger> userLedger) {
         this.userLedger = userLedger;
+    }
+
+    public Timestamp getJoinedAt() {
+        return joinedAt;
+    }
+
+    public void setJoinedAt(Timestamp joinedAt) {
+        this.joinedAt = joinedAt;
     }
 
     public List<Stock> getUserStocks() {

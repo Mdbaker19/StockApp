@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/styleHead :: styleHead(Error)"></head>
+
+<body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+    <h1>Error!</h1>
+    <p th:text="${error}"></p>
+
+    <div th:replace="partials/materailScripts :: scripts"></div>
+
+</body>
+</html>

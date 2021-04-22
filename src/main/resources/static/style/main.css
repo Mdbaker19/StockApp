@@ -3,3 +3,16 @@
     margin: 0;
     padding: 0;
 }
+
+html {
+    font-size: 75%;
+}
+
+body{
+    background-color: dimgray;
+}
+
+main{
+    width: 80%;
+    margin: auto;
+}

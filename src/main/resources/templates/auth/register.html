@@ -1,12 +1,40 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+<head th:replace="partials/styleHead :: styleHead(Register)"></head>
+
 <body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+    <main>
+        <h1 th:text="${heading}"></h1>
+        <div id="errorMsgBox">
+            <div class="errorMsg" th:if="${errorList.size() &gt; 0}" th:each="error : ${errorList}">
+                <small th:text="${error}"></small><br>
+            </div>
+        </div>
+
+        <form th:action="@{/register}" th:method="POST" th:object="${user}">
+            <div class="input-field">
+                <input id="username" type="text" class="validate" th:field="*{username}">
+                <label for="username">UserName</label>
+            </div>
+            <div class="input-field">
+                <input id="email" type="text" class="validate" th:field="*{email}">
+                <label for="email">Email</label>
+            </div>
+            <div class="input-field">
+                <input id="password" type="password" class="validate" th:field="*{password}">
+                <label for="password">Password</label>
+            </div>
+            <div class="input-field">
+                <input id="confirmPass" name="confirmPass" type="password" class="validate">
+                <label for="confirmPass">Confirm Password</label>
+            </div>
+            <button>Submit</button>
+        </form>
+    </main>
+
+    <div th:replace="partials/materailScripts :: scripts"></div>
+
 </body>
 </html>
