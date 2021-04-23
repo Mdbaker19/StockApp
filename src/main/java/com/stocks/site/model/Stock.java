@@ -13,16 +13,19 @@ public class Stock {
     private long id;
 
     @Column(nullable = false)
+    private String ticker;
+
+    @Column(nullable = false)
     private double currentValue;
 
     @Column(nullable = false)
-    private double high;
+    private double dayHigh;
 
     @Column(nullable = false)
-    private double low;
+    private double dayLow;
 
     @Column(nullable = false)
-    private long volume;
+    private long dayVolume;
 
     @ManyToMany(mappedBy = "userStocks")
     private List<User> userList;
@@ -33,13 +36,14 @@ public class Stock {
     public Stock() {
     }
 
-    public Stock(long id, double currentValue, double high, double low, long volume, List<User> userList, List<Values> stockValues) {
+    public Stock(long id, String ticker, double currentValue, double dayHigh, double dayLow, long dayVolume, List<User> userList, List<Values> stockValues) {
         this.id = id;
+        this.ticker = ticker;
         this.stockValues = stockValues;
         this.currentValue = currentValue;
-        this.high = high;
-        this.low = low;
-        this.volume = volume;
+        this.dayHigh = dayHigh;
+        this.dayLow = dayLow;
+        this.dayVolume = dayVolume;
         this.userList = userList;
     }
 
@@ -49,6 +53,14 @@ public class Stock {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getTicker() {
+        return ticker;
+    }
+
+    public void setTicker(String ticker) {
+        this.ticker = ticker;
     }
 
     public List<Values> getStockValues() {
@@ -68,27 +80,27 @@ public class Stock {
     }
 
     public double getHigh() {
-        return high;
+        return dayHigh;
     }
 
-    public void setHigh(double high) {
-        this.high = high;
+    public void setHigh(double dayHigh) {
+        this.dayHigh = dayHigh;
     }
 
     public double getLow() {
-        return low;
+        return dayLow;
     }
 
-    public void setLow(double low) {
-        this.low = low;
+    public void setLow(double dayLow) {
+        this.dayLow = dayLow;
     }
 
     public long getVolume() {
-        return volume;
+        return dayVolume;
     }
 
-    public void setVolume(long volume) {
-        this.volume = volume;
+    public void setVolume(long dayVolume) {
+        this.dayVolume = dayVolume;
     }
 
     public List<User> getUserList() {
