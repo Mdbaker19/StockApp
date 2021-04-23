@@ -13,10 +13,10 @@ public class Values {
     private long id;
 
     @Column(nullable = false)
-    private int timeId;
+    private String timeId;
 
     @Column(nullable = false)
-    private String valueString;
+    private double valueAtTime;
 
     @ManyToOne
     @JoinColumn(name = "stock_id")
@@ -24,10 +24,10 @@ public class Values {
 
     public Values(){}
 
-    public Values(long id, String valueString, Stock stock, int timeId) {
+    public Values(long id, double valueAtTime, Stock stock, String timeId) {
         this.id = id;
         this.timeId = timeId;
-        this.valueString = valueString;
+        this.valueAtTime = valueAtTime;
         this.stock = stock;
     }
 
@@ -35,24 +35,25 @@ public class Values {
         return id;
     }
 
-    public int getTimeId() {
-        return timeId;
-    }
-
-    public void setTimeId(int timeId) {
-        this.timeId = timeId;
-    }
 
     public void setId(long id) {
         this.id = id;
     }
 
-    public String getValueString() {
-        return valueString;
+    public String getTimeId() {
+        return timeId;
     }
 
-    public void setValueString(String valueString) {
-        this.valueString = valueString;
+    public void setTimeId(String timeId) {
+        this.timeId = timeId;
+    }
+
+    public double getValueAtTime() {
+        return valueAtTime;
+    }
+
+    public void setValueAtTime(double valueAtTime) {
+        this.valueAtTime = valueAtTime;
     }
 
     public Stock getStock() {
