@@ -15,35 +15,15 @@ public class Stock {
     @Column(nullable = false)
     private String ticker;
 
-    @Column(nullable = false)
-    private double currentValue;
-
-    @Column(nullable = false)
-    private double dayHigh;
-
-    @Column(nullable = false)
-    private double dayLow;
-
-    @Column(nullable = false)
-    private long dayVolume;
-
     @ManyToMany(mappedBy = "userStocks")
     private List<User> userList;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "stock")
-    private List<Values> stockValues;
 
     public Stock() {
     }
 
-    public Stock(long id, String ticker, double currentValue, double dayHigh, double dayLow, long dayVolume, List<User> userList, List<Values> stockValues) {
+    public Stock(long id, String ticker, List<User> userList) {
         this.id = id;
         this.ticker = ticker;
-        this.stockValues = stockValues;
-        this.currentValue = currentValue;
-        this.dayHigh = dayHigh;
-        this.dayLow = dayLow;
-        this.dayVolume = dayVolume;
         this.userList = userList;
     }
 
@@ -61,46 +41,6 @@ public class Stock {
 
     public void setTicker(String ticker) {
         this.ticker = ticker;
-    }
-
-    public List<Values> getStockValues() {
-        return stockValues;
-    }
-
-    public void setStockValues(List<Values> stockValues) {
-        this.stockValues = stockValues;
-    }
-
-    public double getCurrentValue() {
-        return currentValue;
-    }
-
-    public void setCurrentValue(double currentValue) {
-        this.currentValue = currentValue;
-    }
-
-    public double getHigh() {
-        return dayHigh;
-    }
-
-    public void setHigh(double dayHigh) {
-        this.dayHigh = dayHigh;
-    }
-
-    public double getLow() {
-        return dayLow;
-    }
-
-    public void setLow(double dayLow) {
-        this.dayLow = dayLow;
-    }
-
-    public long getVolume() {
-        return dayVolume;
-    }
-
-    public void setVolume(long dayVolume) {
-        this.dayVolume = dayVolume;
     }
 
     public List<User> getUserList() {
