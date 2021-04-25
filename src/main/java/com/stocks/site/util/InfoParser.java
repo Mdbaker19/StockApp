@@ -7,13 +7,11 @@ import com.stocks.site.repository.ValuesRepo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class InfoParser {
+
 
     private final StockRepo stockDao;
     private final ValuesRepo valueDao;
@@ -23,7 +21,7 @@ public class InfoParser {
         this.stockDao = stockDao;
     }
 
-    public void main(String[] args) {
+    public static void main(String[] args) {
         try {
             File myObj = new File("data.txt");
             Scanner myReader = new Scanner(myObj);
@@ -35,7 +33,7 @@ public class InfoParser {
         }
     }
 // time, open, high, low, close, vol
-    private void parseReader(Scanner reader, String ticker){
+    private static void parseReader(Scanner reader, String ticker){
         List<List<String>> dataList = new ArrayList<>();
         int count = 0;
         while(reader.hasNextLine()) {
@@ -52,6 +50,7 @@ public class InfoParser {
         for(int i = filtered.size() - 1; i >= 0; i--) {
             List<String> daySlotInfo = filtered.get(i);
             for(int j = 0; j < daySlotInfo.size(); j++) {
+                System.out.println(daySlotInfo.get(j));
                 Values value = new Values();
                 value.setValueAtTime();
                 value.setTimeId();
@@ -62,8 +61,11 @@ public class InfoParser {
         // time id is the date and time together as a num
     }
 
-    private Stock createStock(List<List<String>> dataList, String ticker) {
-
+    private static Stock createStock(List<List<String>> dataList, String ticker) {
+        Stock stock = new Stock();
+        stock.setTicker(ticker);
+        stockDao.save(stock);
+        return stock;
     }
 
 }
