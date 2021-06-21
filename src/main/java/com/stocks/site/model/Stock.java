@@ -18,11 +18,15 @@ public class Stock {
     @ManyToMany(mappedBy = "userStocks")
     private List<User> userList;
 
+    @Column(nullable = false)
+    private double price;
+
     public Stock() {
     }
 
-    public Stock(long id, String ticker, List<User> userList) {
+    public Stock(long id, String ticker, double price, List<User> userList) {
         this.id = id;
+        this.price = price;
         this.ticker = ticker;
         this.userList = userList;
     }
@@ -49,5 +53,13 @@ public class Stock {
 
     public void setUserList(List<User> userList) {
         this.userList = userList;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

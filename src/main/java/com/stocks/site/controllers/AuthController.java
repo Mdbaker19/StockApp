@@ -5,6 +5,7 @@ import com.stocks.site.model.User;
 import com.stocks.site.repository.AccountRepo;
 import com.stocks.site.repository.UserRepo;
 import com.stocks.site.service.UserService;
+import com.stocks.site.util.Maker;
 import com.stocks.site.util.Password;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -100,17 +101,9 @@ public class AuthController {
         int newAccountNumber = accountDao.findAll().size();
         Account newAccount = new Account(newAccountNumber + 1, 1000.00);
         accountDao.save(newAccount);
-        user.setIsAuthenticated(0);
-        user.setUserAccount(newAccount);
-        user.setIsAdmin(0);
-        String accountAuthCode = Password.randomRegisterCode();
-        user.setAuthCode(accountAuthCode);
 
-        user.setJoinedAt(new Timestamp(new Date().getTime()));
-        user.setPassword(encoder.encode(user.getPassword()));
-        user.setProfileImage("https://g.foolcdn.com/editorial/images/618711/arrow-angles-up-on-a-green-stock-chart.jpg");
+        Maker.makeUser(userDao, encoder, newAccount, user);
 
-        userDao.save(user);
         return "redirect:/login";
 
     }
