@@ -20,8 +20,7 @@ public class Ledger {
     private List<User> userList;
 
 
-    public Ledger() {
-    }
+    public Ledger() { }
 
     public Ledger(long id, String record, List<User> userList) {
         this.id = id;

@@ -32,7 +32,7 @@
             </div>
         </div>
 
-        <form th:action="@{/login}" th:method="POST">
+        <form class="login-form" th:action="@{/login}" th:method="POST">
             <div class="input-field">
                 <input id="username" type="text" class="validate" name="username">
                 <label for="username">UserName</label>
@@ -46,8 +46,9 @@
         <a th:href="@{/register}">Register</a>
     </main>
 
+    <footer th:replace="partials/footer :: footer"></footer>
 
-<div th:replace="partials/materailScripts :: scripts"></div>
+    <div th:replace="partials/materailScripts :: scripts"></div>
 
 </body>
 </html>
