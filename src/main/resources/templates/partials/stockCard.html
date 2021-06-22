@@ -1,8 +1,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<div th:fragment="stockCard">
+<div th:fragment="stockCard" th:remove="tag">
 	<h5 th:text="${stock.ticker}"></h5>
 	<h5 th:text="${stock.price}"></h5>
+	<a th:href="@{/trade/{id}(id=${stock.id})}"><button>Trade</button></a>
 </div>
 
 </html>
