@@ -5,22 +5,34 @@
 <body>
     <nav th:replace="partials/navbar :: navbar"></nav>
 
-
-
-    <section id="image-head-home" class="main-heading-fader">
-        <img th:src="@{/img/stock_chart_1.jpeg}" alt="stockChart" class="mainImg">
-        <img th:src="@{/img/stock_chart_2.png}" alt="stockChart" class="mainImg hide-on-small-only">
-        <img th:src="@{/img/stock_chart_3.jpeg}" alt="stockChart" class="mainImg hide-on-small-only">
-    </section>
+    <section id="image-head-home"></section>
 
     <main>
 
         <div class="main-heading-fader">
-            <h2 class="my-heading-text">Learn to trade stocks fast, price actions based off historical data from popular stocks</h2>
+            <div class="home-page-card">
+                <p class="my-heading-text">Learn to trade stocks fast</p>
+                <img th:src="@{/img/stock_chart_2.png}" alt="stockChart" class="mainImg">
+            </div>
+            <div class="home-page-card">
+                <p class="my-heading-text">Price actions based off historical data from popular stocks</p>
+                <img th:src="@{/img/stock_chart_3.jpeg}" alt="stockChart" class="mainImg">
+            </div>
         </div>
 
-        <div>
-            <p>More content here as you scroll down</p>
+        <div class="step-container">
+            <div class="steps">
+                <h1 class="steps-number">01</h1>
+                <p>Create an account, research your stocks and trade. Use your starter funds and grow your account</p>
+            </div>
+            <div class="steps">
+                <h1 class="steps-number">02</h1>
+                <p>Create an account, research your stocks and trade. Use your starter funds and grow your account</p>
+            </div>
+            <div class="steps">
+                <h1 class="steps-number">03</h1>
+                <p>Create an account, research your stocks and trade. Use your starter funds and grow your account</p>
+            </div>
         </div>
 
     </main>

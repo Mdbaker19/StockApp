@@ -7,11 +7,11 @@
 
 <main>
 
-    <div>
-
-
-
-    </div>
+    <section class="row">
+        <div class="stock-card col s12 m6" th:each="stock : ${stockList}">
+            <div th:replace="partials/stockCard :: stockCard"></div>
+        </div>
+    </section>
 
 </main>
 
@@ -19,6 +19,14 @@
 
 
 <div th:replace="partials/materailScripts :: scripts"></div>
+
+<script>
+    $(document).ready(() => {
+
+
+
+    });
+</script>
 
 </body>
 </html>

@@ -7,8 +7,22 @@
 
     <main>
 
-        <div>
-            <h2>Viewing a stock, you can buy and sell here</h2>
+        <div class="row">
+            <h2 th:text="${stock.ticker}"></h2>
+            <form th:action="@{/trade-stock/{id}(id=${stock.id})}" th:method="POST">
+                <p>
+                    <label>
+                        (Default Buy)
+                        <input name="group1" type="radio" />
+                        <span>Sell</span>
+                    </label>
+                </p>
+                <div class="input-field">
+                    <input id="amount" type="number" min="1" class="validate" name="amount">
+                    <label for="amount">Amount</label>
+                </div>
+                <button class="btn">Submit</button>
+            </form>
         </div>
 
     </main>
